@@ -49,7 +49,8 @@ class EmbraceOkHttp3NetworkInterceptor internal constructor(
             return chain.proceed(originalRequest)
         }
 
-        val networkSpanForwardingEnabled = embrace.internalInterface.isNetworkSpanForwardingEnabled()
+        // val networkSpanForwardingEnabled = embrace.internalInterface.isNetworkSpanForwardingEnabled()
+        val networkSpanForwardingEnabled = true
         var traceparent: String? = null
         if (networkSpanForwardingEnabled && originalRequest.header(TRACEPARENT_HEADER_NAME) == null) {
             traceparent = embrace.generateW3cTraceparent()
